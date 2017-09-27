@@ -2,6 +2,9 @@
  * Created by SYLVAIN on 27/09/2017.
  */
 
+//mail
+// jmclery@gmail.com
+
 { //ce block { ... } sert a isoler du scope global ces variables
     'use strict';
 
@@ -12,10 +15,13 @@
 
         //model data
         data: {
-            tasks: [
+            tasks: JSON.parse(localStorage.getItem('tasks')) || [
+
+                /*
                 {title: "Nourrir JM", isDone: true},
                 {title: "Acheter un cle", isDone: false},
                 {title: "eazpelapleazple", isDone: false}
+                */
             ],
 
             task: "" //eviter le warning si le v-model est undefined au tout debut du lancement (champ pas remplit)
@@ -43,13 +49,19 @@
             },
             addTask(task){
                 console.log("Add a task !" + task);
+
                 this.tasks.push({title: task, isDone: false});
+
                 this.task = ""; // reset field
+                localStorage.setItem('tasks', JSON.stringify(this.tasks));
+
                 return task;
             },
             deleteTask(index){
                 this.tasks.splice(index, 1);
                 this.task = ""; // reset field
+
+                localStorage.setItem('tasks', JSON.stringify(this.tasks));
 
                 return this.tasks;
             }
