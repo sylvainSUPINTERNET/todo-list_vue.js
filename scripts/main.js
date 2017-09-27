@@ -18,7 +18,7 @@
                 {title: "eazpelapleazple", isDone: false}
             ],
 
-            task: "" //eviter le warning
+            task: "" //eviter le warning si le v-model est undefined au tout debut du lancement (champ pas remplit)
         },
 
         //On peut aussi tuiliser des computed, qui va permettre de consommer moin de ressource, et va etre invoquer UNIQUEMENT lorsque on touche à un point bien précis et non sur tous les changement comme les methodes
